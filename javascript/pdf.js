@@ -1,6 +1,6 @@
 // If absolute URL from the remote server is provided, configure the CORS
 // header on that server.
-var url = 'pro2-05.pdf';
+var url = '所信表明2019.pdf';
 // Loaded via <script> tag, create shortcut to access PDF.js exports.
 
 // The workerSrc property shall be specified.
