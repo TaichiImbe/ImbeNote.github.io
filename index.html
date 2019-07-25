@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./CSS/index.css" type="text/css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+
+  <title>❤️</title>
+</head>
+<body>
+  <!-- <div id="header"></div> -->
+  <div id="header">
+  <h1>ノート</h1>
+  <input type="text" id="picker">
+  <button id="penSize">ペンのサイズ</button>
+  <input for="penSize" type="range" id="Penwidth" value="5" min="0" max="30">
+  <button id="prev">Prev</button>
+  <button id="next">Next</button>
+  <button id="select">選択</button>
+  <button id="draw">ペン</button>
+  <button id="clear-button">全消し</button>
+  <button id="eraser">消しゴム</button>
+  <textarea id="text"></textarea>
+</div>
+  <div class="canvas-wrapper">
+      <!-- <canvas id="sq" width="500" height="500"></canvas> -->
+      <canvas id="pdfCan"></canvas>
+      <canvas id="draw-area"></canvas>
+  </div>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@1.10.100/build/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.2.0/fabric.min.js"></script>
+  <script type="text/javascript" src="./javascript/practice.js"></script>
+  <script type="text/javascript" src="./javascript/mainfab.js"></script>
+  <script type="text/javascript" src="./javascript/postViewFab.js"></script>
+  <script type="text/javascript" src="./javascript/buttonActionFab.js"></script>
+  <!-- <script type="text/javascript" src="./javascript/pdfload.js"></script> -->
+  <script type="text/javascript" src="./javascript/pdf.js"></script>
+  <script type="text/javascript" src="./javascript/mousePositionFab.js"></script>
+  <script type="text/javascript" src="./javascript/keyboardinput.js"></script>
+  <script type="text/javascript" src="./javascript/DrawObject.js"></script>
+</body>
+</html>
