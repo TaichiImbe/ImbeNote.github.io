@@ -6,12 +6,10 @@ const canvas = new fabric.Canvas('draw-area',{
 });
 window.addEventListener('load',() =>{
 
-    const pd = document.getElementById('pdfCan');
+    // const pd = canvas.getElementById('pdfCan');
 
-    // canvas.setWidth(window.innerWidth);
-    // canvas.setHeight(window.innerHeight);
-    canvas.setWidth(pd.width);
-    canvas.setHeight(pd.height);
+    canvas.setWidth(window.innerWidth);
+    canvas.setHeight(window.innerHeight);
 
     fabric.Object.prototype.transparentCorners = false;
     canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);

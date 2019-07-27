@@ -19,10 +19,12 @@ function pageRender(pageNum) {
   pdf.getPage(pageNum).then(function (page) {
   var scale = 1;
   var viewport = page.getViewport(scale);
-  var canvas = document.getElementById('pdfCan');
-  var context = canvas.getContext('2d');
-  canvas.height = viewport.height;
-  canvas.width = viewport.width;
+  var pdfCan = document.getElementById('pdfCan');
+  var context = pdfCan.getContext('2d');
+  canvas.setHeight(viewport.height);
+  canvas.setWidth(viewport.width);
+  pdfCan.height = viewport.height;
+  pdfCan.width = viewport.width;
   var renderContext = {
     canvasContext: context,
     viewport: viewport
