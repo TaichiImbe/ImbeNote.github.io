@@ -1,9 +1,9 @@
 setInterval(function () {
-    const object = canvas.size();
-    const objectArray = canvas.getObjects();
-    // console.log(object);
+    const object = Canvas.size();
+    const objectArray = Canvas.getObjects();
+    // logPrint(object);
     objectArray.forEach(element => {
-        // console.log(element);
-        console.log("Width:"+element.width +", Height:"+element.height);
+        // logPrint(element);
+        //logPrint("Width:"+element.width +", Height:"+element.height);
     });
 }, 10000)

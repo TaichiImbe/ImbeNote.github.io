@@ -1,3 +1,4 @@
+var PageAnno = new Map();
 window.addEventListener('load', () => {
     //ドキュメント取得
     var $f = function (id) {
@@ -21,7 +22,11 @@ window.addEventListener('load', () => {
         if (pageNum <= 1) {
             return;
         }
+        PageAnno.set(pageNum, Canvas.getObjects());
+        Canvas.clear()
+        logPrint(PageAnno);
         pageNum--;
+        AnnotationSet(pageNum);
         pageRender(pageNum);
         textArea.textContent = pageNum + "/" + pdf.numPages;
     }
@@ -30,28 +35,42 @@ window.addEventListener('load', () => {
         if (pageNum >= pdf.numPages) {
             return;
         }
+        PageAnno.set(pageNum, Canvas.getObjects());
+        Canvas.clear()
+        logPrint(PageAnno);
         pageNum++;
+        AnnotationSet(pageNum);
         pageRender(pageNum);
         textArea.textContent = pageNum + "/" + pdf.numPages;
     }
 
+    function AnnotationSet(pageNum) {
+        const Anno = PageAnno.get(pageNum);
+        if (Anno != null) {
+            Anno.forEach(element => {
+                Canvas.add(element);
+            });
+        }
+    }
+
     //canvas上の絵を全部消す
     clearEI.onclick = function () {
-        canvas.clear()
+        Canvas.clear()
     };
 
     //選択モード
     selectButton.onclick = function () {
-        canvas.isDrawingMode = false;
+        Canvas.isDrawingMode = false;
     };
 
     //消しゴムボタン
     eraserButton.onclick = function () {
-        canvas.isDrawingMode = true;
-        var context = canvas.contextTop;
+        Canvas.isDrawingMode = true;
+        var context = Canvas.contextTop;
         // canvas.contextTop.globalCompositeOperation = 'destination-out';
         // canvas.contextTop.globalCompositeOperation = 'xor';
         context.globalCompositeOperation = 'source-out';
+        context.globalCompositeOperation = 'destination-out';
         // fabric.Objct.drawClipPathOnCache();
         // canvas.drawClipPathOnCache();
         // context.lineCap = 'round' //丸みを帯びた線にする
@@ -62,8 +81,8 @@ window.addEventListener('load', () => {
 
     //ペンボタン
     drawButton.onclick = function () {
-        canvas.isDrawingMode = true;
-        canvas.contextTop.globalCompositeOperation = 'source-over';
+        Canvas.isDrawingMode = true;
+        Canvas.contextTop.globalCompositeOperation = 'source-over';
         // 線の状態を定義する
         // MDN CanvasRenderingContext2D: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineJoin
         // context.lineCap = 'round' //丸みを帯びた線にする
@@ -99,8 +118,8 @@ window.addEventListener('load', () => {
             },
 
             hide: function (color) {
-                console.log(color);
-                canvas.freeDrawingBrush.color = new fabric.Color(color.toHexString()).toRgb();
+                Canvas.freeDrawingBrush.color = new fabric.Color(color.toHexString()).toRgb();
+                Pen.color = Canvas.freeDrawingBrush.color;
             },
 
             palette: [
@@ -132,7 +151,8 @@ window.addEventListener('load', () => {
     });
 
     drawingLine.onchange = function () {
-        canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
+        Canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
+        Pen.brushWidth = Canvas.freeDrawingBrush.width;
     }
 
 });
